@@ -7,6 +7,4 @@ def getBondPrice(y, face, couponRate, m, ppy=1):
     lastpv = (1+(y/ppy))**(-m*ppy)
     pvsum = np.sum(for_alternative)
     out = (pvsum * (couponRate/ppy)+lastpv)*face
-    #print(for_alternative)
-    #print(lastpv)
     return(out)
