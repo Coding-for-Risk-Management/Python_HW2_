@@ -1,0 +1,11 @@
+import numpy as np
+def getBondDuration(y, face, couponRate, m, ppy = 1):
+
+    cf_arr = np.full(m, face*couponRate)
+    cf_arr[-1]=face*couponRate+face
+    t_arr=np.arange(1, m*ppy+1)
+    pv_for_alternative= np.where(t_arr<=(m*ppy),(1+(y/ppy))**(-t_arr),0)
+    pvcfsum=np.multiply(pv_for_alternative,cf_arr)
+    t_pvcfsum=np.multiply(pvcfsum,t_arr)
+    out = np.sum(t_pvcfsum)/np.sum(pvcfsum)
+    return(out)
