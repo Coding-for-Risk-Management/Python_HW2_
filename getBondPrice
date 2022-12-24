@@ -1,0 +1,10 @@
+import numpy as np
+def getBondPrice(y, face, couponRate, m, ppy=1):
+    pvsum = 0
+    lastpv=0
+    t_arr=np.arange(1, m*ppy+1)
+    for_alternative= np.where(t_arr<=(m*ppy),(1+(y/ppy))**(-t_arr),0)
+    lastpv = (1+(y/ppy))**(-m*ppy)
+    pvsum = np.sum(for_alternative)
+    out = (pvsum * (couponRate/ppy)+lastpv)*face
+    return(out)

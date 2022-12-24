@@ -1,0 +1,6 @@
+import numpy as np
+def FizzBuzz(start, finish):
+    numvec = np.arange(start,finish+1)
+    objvec = np.array(numvec,dtype =object)
+    out = np.where((objvec % 5 == 0) & (objvec % 3 ==0), 'fizzbuzz',np.where(objvec % 3 == 0,'fizz',np.where(objvec % 5 == 0,'buzz',objvec)))
+    return(out)
